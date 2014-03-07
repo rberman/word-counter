@@ -13,39 +13,39 @@ public class TestAllWordsCounter {
     @Test
     public void testInitial() {
         AllWordsCounter counter = new AllWordsCounter();
-        assertEquals(counter.getCount("foo"), 0);
-        assertEquals(counter.getCount("bar"), 0);
-        assertEquals(counter.getCount("baz"), 0);
-        assertEquals(counter.getNumWords(), 0);
+        assertEquals(0, counter.getCount("foo"));
+        assertEquals(0, counter.getCount("bar"));
+        assertEquals(0, counter.getCount("baz"));
+        assertEquals(0, counter.getNumWords());
     }
 
     @Test
     public void testIncrement() {
         AllWordsCounter counter = new AllWordsCounter();
-        assertEquals(counter.getCount("foo"), 0);
+        assertEquals(0,counter.getCount("foo"));
         counter.count("foo");
-        assertEquals(counter.getCount("foo"), 1);
+        assertEquals(1, counter.getCount("foo"));
         counter.count("foo");
         counter.count("foo");
         counter.count("bar");
         counter.count("bar");
-        assertEquals(counter.getCount("foo"), 3);
-        assertEquals(counter.getCount("bar"), 2);
-        assertEquals(counter.getNumWords(), 2);
+        assertEquals(3, counter.getCount("foo"));
+        assertEquals(2, counter.getCount("bar"));
+        assertEquals(2, counter.getNumWords());
     }
 
     @Test
     public void testCaseInsensitive() {
         AllWordsCounter counter = new AllWordsCounter();
-        assertEquals(counter.getCount("foo"), 0);
+        assertEquals(0, counter.getCount("foo"));
         counter.count("foO");
         counter.count("fOo");
         counter.count("fo-o");
         counter.count("bar");
         counter.count("bar!");
-        assertEquals(counter.getCount("foo"), 3);
-        assertEquals(counter.getCount("bar"), 2);
-        assertEquals(counter.getNumWords(), 2);
+        assertEquals(3, counter.getCount("foo"));
+        assertEquals(2, counter.getCount("bar"));
+        assertEquals(2, counter.getNumWords());
     }
 
 
@@ -53,15 +53,15 @@ public class TestAllWordsCounter {
     @Test
     public void testGetAllWords() {
         AllWordsCounter counter = new AllWordsCounter();
-        assertEquals(counter.getCount("foo"), 0);
+        assertEquals(0, counter.getCount("foo"));
         counter.count("foo");
         counter.count("fOo");
         counter.count("fo-o");
         counter.count("bar");
         counter.count("bar!");
-        assertEquals(counter.getCount("foo"), 3);
-        assertEquals(counter.getCount("bar"), 2);
-        assertEquals(counter.getNumWords(), 2);
+        assertEquals(3, counter.getCount("foo"));
+        assertEquals(2, counter.getCount("bar"));
+        assertEquals(2, counter.getNumWords());
         assertEquals(counter.getAllWords(), new String[] { "foo", "bar"});
     }
 
